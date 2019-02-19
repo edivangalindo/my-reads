@@ -18,15 +18,14 @@ const BookList = props => {
             title="Currently Reading"
             onChangeShelf={props.onChange}
           />
-
-          <BookShelf
-            books={books.filter(book => book.shelf === 'read')}
-            title="Read"
-            onChangeShelf={props.onChange}
-          />
           <BookShelf
             books={books.filter(book => book.shelf === 'wantToRead')}
             title="Want to Read"
+            onChangeShelf={props.onChange}
+          />
+          <BookShelf
+            books={books.filter(book => book.shelf === 'read')}
+            title="Read"
             onChangeShelf={props.onChange}
           />
         </div>
