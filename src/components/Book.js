@@ -3,8 +3,17 @@ import { PropTypes } from 'prop-types';
 
 const Book = props => {
   const changeBookShelf = event => props.update(event.target.value);
-
   const book = props.book;
+
+  const getThumbnail = () => {
+    if (book.imageLinks) return book.imageLinks.thumbnail;
+
+    // Tentando tratar livros que não possuem thumbnail...
+    return `http://via.placeholder.com/128x192?text=${encodeURIComponent(
+      book.title.trim()
+    )}`;
+  };
+
   return (
     <li>
       <div className="book">
@@ -14,7 +23,7 @@ const Book = props => {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: `url("${book.imageLinks.thumbnail}")`
+              backgroundImage: `url("${getThumbnail()}")`
             }}
           />
           <div className="book-shelf-changer">
