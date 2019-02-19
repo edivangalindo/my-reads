@@ -26,7 +26,6 @@ class Search extends Component {
   };
 
   changeBookShelf = books => {
-    debugger;
     let allBooks = this.props.books;
 
     for (let book of books) {

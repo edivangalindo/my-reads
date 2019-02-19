@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import Routes from './routes/Routes';
 import * as BooksAPI from './api/BooksAPI';
-import BookList from './components/BookList';
-import Search from './components/Search';
-import NotFound from './components/NotFound';
 import './assets/css/App.css';
 
 class App extends Component {
@@ -25,23 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <BookList books={this.state.books} onChange={this.updateBooks} />
-            )}
-          />
-          <Route
-            exact
-            path="/search"
-            render={({ history }) => (
-              <Search onChange={this.updateBooks} books={this.state.books} />
-            )}
-          />
-          <Route component={NotFound} />
-        </Switch>
+        <Routes books={this.state.books} updateBooks={this.updateBooks} />
       </div>
     );
   }
